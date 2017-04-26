@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Independent Embedded Stuff, not only for Raspberry Pi and Arduino</title>
+		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+	</head>
+	<body>
+		<nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>
+			<li><a href="/projects">Ongoing Projects</a></li>
+	        	<li><a href="/arduino">Arduino</a></li>
+            		<li><a href="/raspberrypi">Raspberry Pi</a></li>
+           		<li><a href="/other">Other</a></li>
+        		<li><a href="/coupons">Coupons</a></li>
+        		<li><a href="/blog/">Blog</a></li>
+    		</ul>
+		</nav>
+		<div class="container">
+    		<div class="blurb">
+        		<h1>DIY Bike Alarm</h1>
+				<p>This version of a DIY Bicycle alarm is easy to make, cheap and keep a potential thief away. 
+					This DIY Bicycle Alarm will make an alarm noise when the bicycle is going to be moved 
+					and the angle of the bike changes to more than 15%. 
+					To get this functionality the system is made with a tilt sensor and a speaker connected to an Arduino. 
+					The tilt sensor will recognise when the angle position of the bike changes and triggers a speaker to make some alarm noise. 
+					All together with a battery it will still small enough to fit into a box that can be mounted to the bike. 
+					The parts you will need for this project:</p>
+			<p> Needed parts:</p>
+			
+			<ul>
+				<li>1 x Arduino UNO or Arduino Pro Mini</li>
+				<li>1 x Solderless Breadboard or for soldering</li>
+				<li>1 x Tilt sensor</li>
+				<li>1x Buzzer (speaker)</li>
+				<li>Jumer Wires</li>
+				<li>1 x 10K resistor</li>
+				<li>Battery: 4x 1.5 AA or 9V</li>
+				<li>Box for mounting it on the bicycle</li>
+					</ul>
+			<p>For testing, it is good to have an extra breadboard for the tilt sensor, så, you can move it around better. </p>
+			<h3> Hardware Setup</h3>
+			<img src="https://lh3.google.com/u/0/d/0B69hr4dMQB_RYzNCMVRFdHBmcjQ=w1160-h616-iv1">
+			
+			<h3>The Code that brings everything to life</h3>
+			
+			<code>
+// DIY BICYCLE ALARM <br>
+int inPin = 2; // the number of the input pin<br>
+int reading; // the current reading from the<br>
+input pin const int SpeakerPin = 8; // the number of the Speaker/Buzzer <br>
+pin void setup(){<br>
+pinMode (inPin, INPUT); <br>
+Serial.begin(9600);<br>
+}<br>
+void loop () {<br>
+reading = digitalRead(inPin); <br>
+if (reading == 1) {<br>
+tone(SpeakerPin, 494, 500); // if tilted, turn the Speaker ON delay(500);<br>
+} else {<br>
+noTone(SpeakerPin); } <br>
+Serial.println(reading); // only for debugging <br>
+delay(200); // pause 200 milliseconds between readings <br>
+}<br>
+// End of Code				<br>
+			</code>
+			<p>And finally it's up to you to put everything in a box and mount it to your bike.</p>
+			<p>This is how it looked like when I was testing it.</p>
+			<img src="https://lh3.google.com/u/0/d/0B69hr4dMQB_RTldqZGxXc3RFZ1E=w1160-h616-iv1">
+					
+    		</div><!-- /.blurb -->
+		</div><!-- /.container -->
+		<footer>
+    		<ul>
+        		<li><a href="mailto:emaker.studio@gmail.com">email</a></li>
+        		<li><a href="https://twitter.com/EmakerStudio">twitter</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>
